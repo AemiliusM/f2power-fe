@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class Create extends Component {
+class CreatePower extends Component {
     state = {  }
     render() { 
         return ( <h1>Create</h1> );
     }
 }
  
-export default Create;
+export default CreatePower;
