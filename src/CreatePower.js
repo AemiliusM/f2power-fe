@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { createPower, getTypes, findByType } from './fetch-utils';
+import { createPower, getTypes } from './fetch-utils';
 import classNames from 'classnames';
 class CreatePower extends Component {
     state = { 
         id: 0,
         power_name: '',
         description: '',
-        realistic: '',
-        power_type: '',
+        realistic: true,
+        power_type: 1,
         types: [],
         message: '',
         error: false,
@@ -25,13 +25,13 @@ class CreatePower extends Component {
          const descriptionInput = this.state.description
          const realisticInput = this.state.realistic
          const nameInput = this.state.power_name
-         const typeFind = findByType(this.state.types, powerType)
          const powerObj = { 
              power_name:nameInput, 
              description:descriptionInput, 
              realistic:realisticInput,
-             type_id:typeFind
+             type_id:powerType
             }
+            console.log(powerObj)
          createPower(powerObj);
      }
 
@@ -89,11 +89,10 @@ class CreatePower extends Component {
                     <label>Type:</label>
                     <select value={this.state.power_type} 
                     onChange={(e) => 
-                    {this.setState({power_type: e.target.value});}} >
+                    {this.setState({power_type: e.target.value})}} >
                         {this.state.types.map((power_type)=> {
-                            console.log(power_type)
                             return (
-                                <option key={power_type.id} value={power_type.type}>{power_type.type}</option>
+                                <option key={power_type.id} value={power_type.id}>{power_type.type}</option>
                             );
                         } )}
                     </select>
