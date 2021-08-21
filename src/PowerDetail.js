@@ -6,7 +6,7 @@ class PowerDetail extends Component {
         id: 0,
         power_name: '',
         description: '',
-        realistic: '',
+        realistic: true,
         power_type: '',
         types: [],
         message: '',
@@ -18,7 +18,6 @@ class PowerDetail extends Component {
          const powerId = this.props.match.params.id;
          const types = await getTypes();
          const powerData = await getOnePower(powerId);
-         console.log(powerData);
          this.setState( {
             id: powerId,
              power_name: powerData.power_name,
@@ -102,7 +101,6 @@ class PowerDetail extends Component {
                     onChange={(e) => 
                     {this.setState({power_type: e.target.value});}} >
                         {this.state.types.map((power_type)=> {
-                            console.log(power_type)
                             return (
                                 <option key={power_type.id} value={power_type.type}>{power_type.type}</option>
                             );
